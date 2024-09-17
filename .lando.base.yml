@@ -23,8 +23,9 @@ config:
   # PHP 7.2 for Magento 2.2.3 - adjust as needed
   php: '8.1'
   webroot: pub
-  database: mysql
-  composer_version: '1.10.21'
+  # Use MariaDB 10.5 or 10.4 for Magento 2.4.5 and older, adjust as needed based on recommendations: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/system-requirements
+  database: mariadb:10.6
+  composer_version: 2
 
   # Optionally activate xdebug
   xdebug: false
@@ -130,7 +131,7 @@ tooling:
 
   magento:
     description: Execute ./bin/magento commands
-    cmd: test -f /app/bin/magento && /app/bin/magento
+    cmd: /app/bin/magento
     service: appserver
 
   magento:setup:destroy:
